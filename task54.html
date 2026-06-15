@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Gateway Integration Demo</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:white;
+    padding:25px;
+    width:400px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#28a745;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#218838;
+}
+
+#result{
+    margin-top:15px;
+    text-align:center;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Payment Gateway Demo</h2>
+
+    <input type="text" id="name" placeholder="Card Holder Name">
+    <input type="text" id="card" placeholder="Card Number">
+    <input type="text" id="amount" placeholder="Amount">
+
+    <button onclick="processPayment()">Pay Now</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function processPayment() {
+    const name = document.getElementById("name").value;
+    const card = document.getElementById("card").value;
+    const amount = document.getElementById("amount").value;
+
+    if(name === "" || card === "" || amount === "") {
+        document.getElementById("result").innerHTML =
+            "<span style='color:red'>Please fill all fields.</span>";
+        return;
+    }
+
+    document.getElementById("result").innerHTML =
+        "<span style='color:green'>Payment Successful! Transaction ID: TXN" +
+        Math.floor(Math.random() * 1000000) +
+        "</span>";
+}
+</script>
+
+</body>
+</html>
